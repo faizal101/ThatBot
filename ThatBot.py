@@ -23,12 +23,12 @@ strings = [', but instead slipped on some jam and fell right into a conveniently
          ' with poutine.', ', but they slipped on a banana peel.',
          ' and in the end, the only victor was the coffin maker.',
          ', and what a fight it is! Whoa mama!', ', with two thousand blades!',
-         ', but he fell into a conveniently placed manhole!',
+         ', but fell into a conveniently placed manhole!',
          ', but they tripped over a rock and fell in the ocean.',
          ', but they hurt themselves in confusion.', '. HADOUKEN!', ' with a pillow.',
          ' with a large fish.', ', but they stumbled over their shoelaces.', ', but they missed.',
-         ' with a burnt piece of toast.', ', but it wasn\'t every effective.',
-           'and it was super effective!', ', but nothing happened.', ', while shouting out a move as if they\'re a main character from an anime.', ', but gave up halfway.']
+         ' with a burnt piece of toast.', ', but it wasn\'t very effective.',
+           ' and it was super effective!', ', but nothing happened.', ', while shouting out a move as if they\'re a main character from an anime.', ', but gave up halfway.']
 
 logging.basicConfig(level=logging.INFO)
 
@@ -97,7 +97,7 @@ async def commands(ctx):
     emb = (discord.Embed(title="List of commands: ", description=
         '.coin -Flips a coin \n.smug -Posts a smug '
         '\n.yay –umu vs uwu vs owo. winner: +o+  \n.commands \-Shows this list '
-        '\n.info –Shows information about the bot \n. –invite link to add this bot to your server if you want I guess '
+        '\n.info –Shows information about the bot \n. –Invite link to add this bot to your server if you want I guess '
         '\n.bestgril –Best gril for you may/may not be the same as mine \n.headpat –The world needs more headpats'
         '\n.fight –Fight with someone in this server', colour=0xEC40DF))
     await ctx.send(embed=emb)
