@@ -18,17 +18,6 @@ grilinfo = ['__Ena Komiya from Just Because!__',
             '__Rin Shibuya from THE iDOLM@STER__',
             '__Charlotte Dunois from Infinite Stratos__',
             '__Megumin from Kono Subarashii Sekai ni Shukufuku wo!__']
-strings = [', but instead slipped on some jam and fell right into a conveniently placed hole.',
-         ' with a transformer.', ', but creates a black hole and gets sucked in.',
-         ' with poutine.', ', but they slipped on a banana peel.',
-         ' and in the end, the only victor was the coffin maker.',
-         ', and what a fight it is! Whoa mama!', ', with two thousand blades!',
-         ', but fell into a conveniently placed manhole!',
-         ', but they tripped over a rock and fell in the ocean.',
-         ', but they hurt themselves in confusion.', '. HADOUKEN!', ' with a pillow.',
-         ' with a large fish.', ', but they stumbled over their shoelaces.', ', but they missed.',
-         ' with a burnt piece of toast.', ', but it wasn\'t very effective.',
-           ' and it was super effective!', ', but nothing happened.', ', while shouting out a move as if they\'re a main character from an anime.', ', but gave up halfway.']
 
 logging.basicConfig(level=logging.INFO)
 
@@ -81,8 +70,8 @@ async def yay(ctx):
 
 @bot.command()
 async def fight(ctx, user: discord.Member):
-    string = random.choice(strings)
-    await ctx.send('{} is fighting {}{}'.format(ctx.author.mention, user.mention, string))
+    from stringChoice import fight
+    await ctx.send('{} is fighting {}{}'.format(ctx.author.mention, user.mention, fight()))
 
 @bot.command()
 async def info(ctx):
@@ -101,6 +90,12 @@ async def commands(ctx):
         '\n.bestgril –Best gril for you may/may not be the same as mine \n.headpat –The world needs more headpats'
         '\n.fight –Fight with someone in this server', colour=0xEC40DF))
     await ctx.send(embed=emb)
+
+@bot.command(name='8ball')
+async def _8ball(ctx, *, message: str):
+    from stringChoice import ball
+    user = str(ctx.author).split('#')[0]
+    await ctx.send('{} asked: {} \n8ball: {}'.format(user, message, ball()))
 
 
 bot.run('')  # token goes here
