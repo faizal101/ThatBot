@@ -1,0 +1,21 @@
+  # list of pathname that is used
+
+
+  # primary pathname
+/Users/username/Documents/GitHub/ThatBot/
+
+  # headpat pathname location
+/Users/username/Documents/GitHub/ThatBot/headpats/
+
+
+
+  ### Notes
+
+  Lines starts at '0'. So line 14 `### Notes` would be `lines[13]`
+  `.split('\n')[0]` is used as there's a new line at the end of the sentence (obviously).
+  Not saving that would result in the variable having the new line, which we don't want.
+  The reason I'm listing my pathname here instead of in the actual code is because:
+  –My computer and VPS obviously have different paths.
+  –Changing the pathname every time is a drag.
+  –I sometimes forget to change the pathname.
+  –It's easy to change the pathname at any time, without the need to stop the bot or something. I guess.

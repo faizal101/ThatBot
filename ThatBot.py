@@ -2,8 +2,6 @@ import discord, random, os, logging
 from discord.ext import commands
 
 bot = commands.Bot(command_prefix='.')
-path = 'path'  # default path goes here
-headpat_path = 'headpats'  # headpats folder path goes here
 grilinfo = ['__Ena Komiya from Just Because!__',
             '__Mizuki Usami from Kono Bijutsubu ni wa Mondai ga Aru!__',
             '__Senju Muramasa from Eromanga-Sensei__',
@@ -45,12 +43,18 @@ async def coin(ctx):
 
 @bot.command()
 async def smug(ctx):
+    with open('pathname.txt') as f:
+        lines = f.readlines()
+        path = (lines[4]).split('\n')[0]
     file = str(random.randint(1, 71))
     smug = path + 'smug/' + file + '.png'
     await ctx.send(file=discord.File(smug))
 
 @bot.command()
 async def bestgril(ctx):
+    with open('pathname.txt') as f:
+        lines = f.readlines()
+        path = (lines[4]).split('\n')[0]
     gril = (random.randint(0, len(grilinfo) - 1))
     bestgril = path + 'bestgril/' + str(gril + 1) + '.jpg'  # added 1 because list starts at 0 and images starts at 1
     info = grilinfo[gril]
@@ -58,12 +62,18 @@ async def bestgril(ctx):
 
 @bot.command()
 async def headpat(ctx):
-    headpat = random.choice(os.listdir(headpat_path))
-    file = headpat_path + headpat
+    with open('pathname.txt') as f:
+        lines = f.readlines()
+        headpat_path = (lines[7]).split('\n')[0]
+    headpats = random.choice(os.listdir(headpat_path))
+    file = headpat_path + headpats
     await ctx.send(file=discord.File(file))
 
 @bot.command()
 async def yay(ctx):
+    with open('pathname.txt') as f:
+        lines = f.readlines()
+        path = (lines[4]).split('\n')[0]
     file = str(random.randint(0, 25))
     yahay = path + 'yay/' + '60322965_' + file + '.png'
     await ctx.send(file=discord.File(yahay))
