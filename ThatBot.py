@@ -34,7 +34,9 @@ async def say(ctx, *, message: str):
 
 @bot.command()
 async def ping(ctx):
-    await ctx.send('pong!')
+    resp = await ctx.send('Pong! Loading...')
+    diff = resp.created_at - ctx.message.created_at
+    await resp.edit(content='Pong! That took {}ms!'.format(1000*diff.total_seconds()))
 
 @bot.command()
 async def coin(ctx):
