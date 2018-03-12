@@ -109,5 +109,11 @@ async def _8ball(ctx, *, message: str):
     user = str(ctx.author).split('#')[0]
     await ctx.send('{} asked: {} \n8ball: {}'.format(user, message, ball()))
 
+@bot.command()
+async def invite(ctx):
+    """Invite this bot to one of your servers thank"""
+    invite = 'https://discordapp.com/api/oauth2/authorize?client_id=284399078165708802&permissions=1141230657&scope=bot'
+    await ctx.send('Invite me to your server! Invite link: {}'.format(invite))
+
 
 bot.run('')  # token goes here
