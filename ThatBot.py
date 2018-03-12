@@ -2,20 +2,20 @@ import discord, random, os, logging
 from discord.ext import commands
 
 bot = commands.Bot(command_prefix='.')
-grilinfo = ['__Ena Komiya from Just Because!__',
-            '__Mizuki Usami from Kono Bijutsubu ni wa Mondai ga Aru!__',
-            '__Senju Muramasa from Eromanga-Sensei__',
-            '__Vigne from Gabriel Dropout__',
-            '__Nishikino Maki from Love Live__',
-            '__Kurisu Makise from Steins;Gate__',
-            '__Ai Nanasaki from Amagami SS__',
-            '__Shirayuki from Akagami no Shirayukihime__',
-            '__Saya Endou from Dagashi Kashi__',
-            '__Yukari Akiyama from Girls und Panzer__',
-            '__Zero from Zero kara Hajimeru Mahou no Sho__',
-            '__Rin Shibuya from THE iDOLM@STER__',
-            '__Charlotte Dunois from Infinite Stratos__',
-            '__Megumin from Kono Subarashii Sekai ni Shukufuku wo!__']
+grilinfo = ['Ena Komiya from Just Because!',
+            'Mizuki Usami from Kono Bijutsubu ni wa Mondai ga Aru!',
+            'Senju Muramasa from Eromanga-Sensei',
+            'Vigne from Gabriel Dropout',
+            'Nishikino Maki from Love Live',
+            'Kurisu Makise from Steins;Gate',
+            'Ai Nanasaki from Amagami SS',
+            'Shirayuki from Akagami no Shirayukihime',
+            'Saya Endou from Dagashi Kashi',
+            'Yukari Akiyama from Girls und Panzer',
+            'Zero from Zero kara Hajimeru Mahou no Sho',
+            'Rin Shibuya from THE iDOLM@STER',
+            'Charlotte Dunois from Infinite Stratos',
+            'Megumin from Kono Subarashii Sekai ni Shukufuku wo!']
 
 logging.basicConfig(level=logging.INFO)
 
@@ -65,7 +65,7 @@ async def bestgril(ctx):
     gril = (random.randint(0, len(grilinfo) - 1))
     bestgril = path + 'bestgril/' + str(gril + 1) + '.jpg'  # added 1 because list starts at 0 and images starts at 1
     info = grilinfo[gril]
-    await ctx.send(file=discord.File(bestgril), content=info)
+    await ctx.send(file=discord.File(bestgril), content='__{}__'.format(info))
 
 @bot.command()
 async def headpat(ctx):
