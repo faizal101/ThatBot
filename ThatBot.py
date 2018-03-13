@@ -115,5 +115,36 @@ async def invite(ctx):
     invite = 'https://discordapp.com/api/oauth2/authorize?client_id=284399078165708802&permissions=1141230657&scope=bot'
     await ctx.send('Invite me to your server! Invite link: {}'.format(invite))
 
+@bot.command()
+async def danbooru(ctx, *, search: str):
+    from pybooru import Danbooru
+
+    client = Danbooru('danbooru')
+    posts = client.post_list(tags=search, random=True, limit=1)
+    url = 'https://danbooru.donmai.us/posts/'
+
+    for post in posts:
+        id = str(post['id'])
+        dblink = url + id
+        file = post['file_url']
+        rating = post['rating']
+        score = post['score']
+        source = post['source']
+
+        emb = discord.Embed(
+            title='Click here to view in your browser',
+            url=dblink,
+            colour=0xEC40DF,
+            description='Rating: {}'.format(rating)
+        )
+        emb.set_image(url=file)
+        emb.set_author(name='Danbooru', url='http://danbooru.donmai.us',
+                       icon_url='https://qt-anime-grils.is-serious.business/555270.png')
+        emb.add_field(name='Rating: ', value=rating, inline=True)
+        emb.add_field(name='Score: ', value=score, inline=True)
+        emb.add_field(name='Source: ', value='[Click Here]({})'.format(source), inline=False)
+
+        await ctx.send(embed=emb)
+
 
 bot.run('')  # token goes here
