@@ -126,7 +126,10 @@ async def danbooru(ctx, *, search: str):
     for post in posts:
         id = str(post['id'])
         dblink = url + id
-        file = post['file_url']
+        if str(post['file_url']).startswith('/data/'):
+            file = 'https://donmai.us{}'.format(post['file_url'])
+        else:
+            file = post['file_url']
         rating = post['rating']
         score = post['score']
         source = post['source']
