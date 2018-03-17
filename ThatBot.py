@@ -117,10 +117,13 @@ async def invite(ctx):
 
 @bot.command()
 async def danbooru(ctx, *, search: str):
-    from pybooru import Danbooru
+    from pybooru import Danbooru, exceptions
 
     client = Danbooru('danbooru')
-    posts = client.post_list(tags=search, random=True, limit=1)
+    try:
+        posts = client.post_list(tags=search, random=True, limit=1)
+    except exceptions.PybooruHTTPError:
+        await ctx.send('Danbooru only allows you to search with 2 tags. Consider donating $20 if you want to search with more tags')
     url = 'https://danbooru.donmai.us/posts/'
 
     for post in posts:
@@ -130,7 +133,12 @@ async def danbooru(ctx, *, search: str):
             file = 'https://donmai.us{}'.format(post['file_url'])
         else:
             file = post['file_url']
-        rating = post['rating']
+            if post['rating'] == "s":
+                rating = 'Safe'
+            elif post['rating'] == 'q':
+                rating = 'Questionable'
+            elif post['rating'] == 'e':
+                rating = 'Explicit'
         score = post['score']
         source = post['source']
 
@@ -138,7 +146,7 @@ async def danbooru(ctx, *, search: str):
             title='Click here to view in your browser',
             url=dblink,
             colour=0xEC40DF,
-            description='Rating: {}'.format(rating)
+            description='__Post ID: {}__'.format(id)
         )
         emb.set_image(url=file)
         emb.set_author(name='Danbooru', url='http://danbooru.donmai.us',
