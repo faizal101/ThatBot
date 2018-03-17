@@ -40,7 +40,7 @@ async def ping(ctx):
     diff = resp.created_at - ctx.message.created_at
     await resp.edit(content='Pong! That took {}ms!'.format(1000*diff.total_seconds()))
 
-@bot.command()
+@bot.command(aliases=['flip'])
 async def coin(ctx):
     """A simple coin flip"""
     flip = random.choice(['heads', 'tails'])
@@ -93,7 +93,7 @@ async def fight(ctx, user: discord.Member):
     from stringChoice import fight
     await ctx.send('{} is fighting {}{}'.format(ctx.author.mention, user.mention, fight()))
 
-@bot.command()
+@bot.command(aliases=['botinfo', 'botstats'])
 async def info(ctx):
     """Information about this bot"""
     servercount = len(bot.guilds)
@@ -115,7 +115,7 @@ async def invite(ctx):
     invite = 'https://discordapp.com/api/oauth2/authorize?client_id=284399078165708802&permissions=1141230657&scope=bot'
     await ctx.send('Invite me to your server! Invite link: {}'.format(invite))
 
-@bot.command()
+@bot.command(aliases=['db', 'dan'])
 async def danbooru(ctx, *, search: str):
     from pybooru import Danbooru, exceptions
 
