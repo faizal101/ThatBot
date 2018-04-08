@@ -157,5 +157,18 @@ async def danbooru(ctx, *, search: str):
 
         await ctx.send(embed=emb)
 
+@bot.command()
+async def navyweeb(ctx):
+    await ctx.send('Nani the fck did you just fcking iimasu about watashi, you chiisai bitch desuka? Watashi’ll have '
+                   'anata know that watashi graduated top of my class in Nihongo 3, and watashi’ve been involved in '
+                   'iroirona Nihongo tutoring sessions, and watashi have over sanbyaku perfect test scores. Watashi am '
+                   'trained in kanji, and watashi is the top letter writer in all of southern California. Anata are '
+                   'nothing to watashi but just another weaboo. Watashi will korosu anata the fck out with vocabulary '
+                   'the likes of which has never been mimasu’d before on this continent, mark watashino fcking words. '
+                   'Anata thinks anata can get away with hanashimasing that kuso to watashi over the intaaneto? Omou '
+                   'again, fcker. As we hanashimasu, watashi am contacting watashino secret netto of otakus across the '
+                   'USA, and anatano IP is being traced right now so you better junbishimasu for the ame, ujimushi. '
+                   'The ame that korosu’s the pathetic chiisai thing anata calls anatano life. You’re fcking '
+                   'shinimashita’d, akachan.')
 
 bot.run('')  # token goes here
